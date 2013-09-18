@@ -1,9 +1,5 @@
 package syslog
 
-import (
-	"log"
-)
-
 // An io.Writer() interface
 type Writer struct {
 	priority Priority

@@ -2,8 +2,8 @@ package syslog
 
 // #include <stdlib.h>
 // #include "syslog_wrapper.h"
+import "C"
 import (
-	"C"
 	"fmt"
 	"sync"
 	"unsafe"
@@ -85,5 +85,5 @@ func Syslog(p Priority, msg string) {
 }
 
 func Syslogf(p Priority, format string, a ...interface{}) {
-	Syslog(p, fmt.Sprintf(format, a))
+	Syslog(p, fmt.Sprintf(format, a...))
 }
