@@ -5,7 +5,7 @@ func Emerg(msg string) {
 }
 
 func Emergf(format string, a ...interface{}) {
-	Syslogf(LOG_EMERG, format, a)
+	Syslogf(LOG_EMERG, format, a...)
 }
 
 func Alert(msg string) {
@@ -13,7 +13,7 @@ func Alert(msg string) {
 }
 
 func Alertf(format string, a ...interface{}) {
-	Syslogf(LOG_ALERT, format, a)
+	Syslogf(LOG_ALERT, format, a...)
 }
 
 func Crit(msg string) {
@@ -21,7 +21,7 @@ func Crit(msg string) {
 }
 
 func Critf(format string, a ...interface{}) {
-	Syslogf(LOG_CRIT, format, a)
+	Syslogf(LOG_CRIT, format, a...)
 }
 
 func Err(msg string) {
@@ -29,7 +29,7 @@ func Err(msg string) {
 }
 
 func Errf(format string, a ...interface{}) {
-	Syslogf(LOG_ERR, format, a)
+	Syslogf(LOG_ERR, format, a...)
 }
 
 func Warning(msg string) {
@@ -37,7 +37,7 @@ func Warning(msg string) {
 }
 
 func Warningf(format string, a ...interface{}) {
-	Syslogf(LOG_WARNING, format, a)
+	Syslogf(LOG_WARNING, format, a...)
 }
 
 func Notice(msg string) {
@@ -45,7 +45,7 @@ func Notice(msg string) {
 }
 
 func Noticef(format string, a ...interface{}) {
-	Syslogf(LOG_NOTICE, format, a)
+	Syslogf(LOG_NOTICE, format, a...)
 }
 
 func Info(msg string) {
@@ -53,7 +53,7 @@ func Info(msg string) {
 }
 
 func Infof(format string, a ...interface{}) {
-	Syslogf(LOG_INFO, format, a)
+	Syslogf(LOG_INFO, format, a...)
 }
 
 func Debug(msg string) {
@@ -61,5 +61,5 @@ func Debug(msg string) {
 }
 
 func Debugf(format string, a ...interface{}) {
-	Syslogf(LOG_DEBUG, format, a)
+	Syslogf(LOG_DEBUG, format, a...)
 }
