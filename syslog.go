@@ -96,6 +96,13 @@ func Syslogf(p Priority, format string, a ...interface{}) {
 	Syslog(p, fmt.Sprintf(format, a...))
 }
 
+// Closes the current Syslog connection, if there is one.
+// This includes closing the /dev/log socket, if it is open.
+// Closelog also sets the identification string for Syslog messages back to the default,
+func Closelog() {
+	C.closelog()
+}
+
 func setlogmask(logmask int) int {
 	i := C.setlogmask(C.int(logmask))
 	return int(i)
