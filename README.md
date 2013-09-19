@@ -7,16 +7,15 @@ Differences with standard library
 --------
 
 The "log/syslog" package writes raw data directly into syslog socket.
-The resulting log message would look like: 
-<code>
-Sep 18 10:28:52 server 2013-09-18T10:28:52Z server [programname][20310]: Log message 
-</code>
+The resulting log message will look like: 
+
+    Sep 18 10:28:52 server 2013-09-18T10:28:52Z server [programname][20310]: Log message 
 
 You see that server name and datetime are duplicated. The log message format is hardcoded into source, 
 thus you cannot omit data duplication. 
 
 Another major disadvantage is that resulting log message cannot be processed using tools such as rsyslog, 
-because it cannot obtain the name of the sender application
+because it cannot obtain the name of the sender application.
 
 The approach used in this library is calling C functions openlog and syslog directly.
 It solves both problems mentioned above.
@@ -40,21 +39,19 @@ it will be cut up to maximum value.
 Example
 --------
 
-<code>
-import "github.com/blackjack/syslog"
-func main() {
-    syslog.Openlog("awesome_app", syslog.LOG_PID, syslog.LOG_USER)
-    syslog.Syslog(syslog.LOG_INFO, "Hello syslog!")
-    syslog.Err("Sample error message")
-    syslog.Critf("Sample %s crit message", "formatted")
-}
-</code>
+    import "github.com/blackjack/syslog"
+    func main() {
+        syslog.Openlog("awesome_app", syslog.LOG_PID, syslog.LOG_USER)
+        syslog.Syslog(syslog.LOG_INFO, "Hello syslog!")
+        syslog.Err("Sample error message")
+        syslog.Critf("Sample %s crit message", "formatted")
+    }
+
 
 The resulting log message will look like: 
-<code>
-Sep 18 18:13:46 server awesome_app[16844]: Hello syslog!
-Sep 18 18:13:46 server awesome_app[16844]: Sample error message
-Sep 18 18:13:46 server awesome_app[16844]: Sample formatted crit message
-</code>
+
+    Sep 18 18:13:46 server awesome_app[16844]: Hello syslog!
+    Sep 18 18:13:46 server awesome_app[16844]: Sample error message
+    Sep 18 18:13:46 server awesome_app[16844]: Sample formatted crit message
 
 Feel the difference!
