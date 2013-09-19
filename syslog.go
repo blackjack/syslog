@@ -65,6 +65,9 @@ const (
 
 var mu sync.RWMutex
 
+// Opens or reopens a connection to Syslog in preparation for submitting messages.
+// See http://www.gnu.org/software/libc/manual/html_node/openlog.html
+// for parameters description
 func Openlog(ident string, o Option, p Priority) {
 	cs := C.CString(ident)
 
@@ -74,6 +77,9 @@ func Openlog(ident string, o Option, p Priority) {
 	C.free(unsafe.Pointer(cs))
 }
 
+// Writes msg to syslog with facility and priority indicated by parameter "p"
+// You can combine facility and priority with bitwise or operator, e.g. :
+// syslog.Syslog( syslog.LOG_INFO | syslog.LOG_USER, "Hello syslog")
 func Syslog(p Priority, msg string) {
 	message := C.CString(msg)
 
@@ -84,6 +90,8 @@ func Syslog(p Priority, msg string) {
 	C.free(unsafe.Pointer(message))
 }
 
+// Formats according to a format specifier and writes to syslog with
+// facility and priority indicated by parameter "p"
 func Syslogf(p Priority, format string, a ...interface{}) {
 	Syslog(p, fmt.Sprintf(format, a...))
 }
