@@ -87,3 +87,8 @@ func Syslog(p Priority, msg string) {
 func Syslogf(p Priority, format string, a ...interface{}) {
 	Syslog(p, fmt.Sprintf(format, a...))
 }
+
+func setlogmask(logmask int) int {
+	i := C.setlogmask(C.int(logmask))
+	return int(i)
+}
