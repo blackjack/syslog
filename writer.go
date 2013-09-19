@@ -2,10 +2,10 @@ package syslog
 
 // An io.Writer() interface
 type Writer struct {
-	priority Priority
+	LogPriority Priority
 }
 
 func (w *Writer) Write(b []byte) (int, error) {
-	Syslog(w.priority, string(b))
+	Syslog(w.LogPriority, string(b))
 	return len(b), nil
 }
