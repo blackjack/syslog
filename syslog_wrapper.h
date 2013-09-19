@@ -28,12 +28,7 @@ void go_openlog(const char* ident, int priority, int options) {
     //cases when size of ident is larger than max_length-1. In that case
     //string would be unterminated, but having extra zero in the end
     //guarantees string termination.
-#ifdef _MSC_VER
-    strcpy_s(_current_ident,max_length-1,ident);
-#else
     strncpy(_current_ident,ident,max_length-1);
-#endif
-
     openlog(_current_ident,priority,options);
 }
 
