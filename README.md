@@ -7,7 +7,7 @@ Differences with standard library
 --------
 
 The "log/syslog" package writes raw data directly into syslog socket.
-The resulting log message would look like: 
+The resulting log message will look like: 
 
     Sep 18 10:28:52 server 2013-09-18T10:28:52Z server [programname][20310]: Log message 
 
@@ -15,7 +15,7 @@ You see that server name and datetime are duplicated. The log message format is 
 thus you cannot omit data duplication. 
 
 Another major disadvantage is that resulting log message cannot be processed using tools such as rsyslog, 
-because it cannot obtain the name of the sender application
+because it cannot obtain the name of the sender application.
 
 The approach used in this library is calling C functions openlog and syslog directly.
 It solves both problems mentioned above.
