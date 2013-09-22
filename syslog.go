@@ -1,3 +1,4 @@
+// Package syslog provides easy to use interface for syslog logging system
 package syslog
 
 // #include <stdlib.h>
